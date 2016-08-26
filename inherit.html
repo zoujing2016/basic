@@ -4,24 +4,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
 <body>
 <script>
-// 封装	
+// 封装   
 //使用new来调用构造函数时发生的事情：
 //    1.创建一个新对象
 //    2.这个新对象会被执行[[原型]]链接
 //    3.新对象会被绑定到函数调用的this
 //    4.如果函数没有返回其他对象，会自动返回这个新对象
 function Cat(name,color){
-	this.name=name;
-	this.color=color;
+    this.name=name;
+    this.color=color;
 }
 Cat.prototype.type='猫科动物';
 Cat.prototype.eat=function(){
-	console.log('吃老鼠');
+    console.log('吃老鼠');
 }
 var cat1=new Cat('大猫','黄色');
 var cat2=new Cat('二猫','黑色');
@@ -44,24 +44,24 @@ console.log('Cat.prototype.isPrototypeOf(cat1):'+Cat.prototype.isPrototypeOf(cat
 // 单纯原型链存在的问题：实例化子类时不能将参数传给父类
 // 重写子类的原型，等于父类的一个实例，父类的实力属性变成子类的原型属性，如果父类包含引用类型的属性，那么子类所有实例会共享该属性
 function Person(name){
-	this.name=name;
+    this.name=name;
 }
 Person.prototype.say=function(){
-	alert('my name is '+this.name);
+    alert('my name is '+this.name);
 }
 
 function aperson(name,id){
-	Person.call(this,name);
-	this.id=id;
+    Person.call(this,name);
+    this.id=id;
 }
 aperson.prototype=new Person();
 aperson.prototype.showId=function(){
-	alert('good morning sir,my work number is '+this.id);
+    alert('good morning sir,my work number is '+this.id);
 }
 
 var simon= new aperson('simon',666);
 simon.say();
 simon.showId();
-</script>	
+</script>   
 </body>
 </html>
