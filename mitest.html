@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+      
+        //first question
+	    function repeat(func,times,wait){
+	    	return function repeatTmp(param){
+	    		var i=0;
+	    		var timer=setInterval(function(){
+	    			i=i+1;
+	    			if(i==times){
+	    				clearInterval(timer);
+	    				return;
+	    			}
+	    			func(param);
+	    		},wait)
+	    	}
+	    }
+	    var repeatFun = repeat(alert, 4, 3000);
+        repeatFun("hellworld");
+
+
+
+        //second question
+        function stringConcat(){
+        	return [].join.call(arguments,'+');
+        }
+        stringConcat.prefix=function(str){
+        	var that=this;
+        	return function(){
+        		[].unshift.call(arguments,str);
+        		return that.apply(null,arguments);
+        	}
+        }
+        var result1 = stringConcat("a", "b"); //result1 = "a+b"
+        alert(result1);
+        var stringConcatWithPrefix = stringConcat.prefix("hellworld");
+        var result2 = stringConcatWithPrefix("a", "b"); // result2 = "hellworld+a+b";
+        alert(result2);
+	</script>
+</body>
+</html>
