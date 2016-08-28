@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 无论通过何种手段将内部函数传递到所在的词法作用域以外，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包
+		function wait(){
+			for(var i=0;i<=5;i++){
+				(function(j){
+					setTimeout(function timer(){
+						console.log(j);
+					},1000);
+				})(i);
+		    }
+		}
+		wait();
+	</script>
+</body>
+</html>
